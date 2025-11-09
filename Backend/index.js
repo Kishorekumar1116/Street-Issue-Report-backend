@@ -4,6 +4,9 @@ import cors from "cors";
 import multer from "multer";
 import path from "path";
 import fs from "fs";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 app.use(cors());
@@ -26,7 +29,7 @@ const upload = multer({ storage });
 
 // 🔹 MongoDB connection
 mongoose
-  .connect("mongodb+srv://kkishore5503:Kishore10@cluster0.yl8m4.mongodb.net/streetissues?retryWrites=true&w=majority")
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.error("❌ MongoDB Error:", err));
 
@@ -51,6 +54,7 @@ const Report = mongoose.model("Report", reportSchema);
 
 // 🔹 Routes
 app.get("/", (req, res) => res.send("📡 Server Running"));
+
 // GET all reports
 app.get("/reports", async (req, res) => {
   try {
@@ -89,6 +93,5 @@ app.post("/report", upload.single("image"), async (req, res) => {
 app.use("/uploads", express.static(uploadDir));
 
 // ✅ Start server
-app.listen(5000, () => console.log("🚀 Server running on http://localhost:5000"));
-
-
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
