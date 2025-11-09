@@ -26,7 +26,7 @@ const upload = multer({ storage });
 
 // 🔹 MongoDB connection
 mongoose
-  .connect("mongodb://localhost:27017/streetissues")
+  .connect("mongodb+srv://kkishore5503:Kishore10@cluster0.yl8m4.mongodb.net/streetissues?retryWrites=true&w=majority")
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.error("❌ MongoDB Error:", err));
 
@@ -90,4 +90,5 @@ app.use("/uploads", express.static(uploadDir));
 
 // ✅ Start server
 app.listen(5000, () => console.log("🚀 Server running on http://localhost:5000"));
+
 
