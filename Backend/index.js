@@ -51,6 +51,17 @@ const Report = mongoose.model("Report", reportSchema);
 
 // 🔹 Routes
 app.get("/", (req, res) => res.send("📡 Server Running"));
+// GET all reports
+app.get("/reports", async (req, res) => {
+  try {
+    const reports = await Report.find({}); // fetch all reports
+    res.status(200).json(reports);        // send as JSON
+  } catch (error) {
+    console.error("Error fetching reports:", error);
+    res.status(500).json({ error: "Server error while fetching reports" });
+  }
+});
+
 
 // 🔹 Upload + Create Report
 app.post("/report", upload.single("image"), async (req, res) => {
@@ -79,3 +90,4 @@ app.use("/uploads", express.static(uploadDir));
 
 // ✅ Start server
 app.listen(5000, () => console.log("🚀 Server running on http://localhost:5000"));
+
