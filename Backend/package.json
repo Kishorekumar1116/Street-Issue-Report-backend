@@ -130,7 +130,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "div": "nodemon"
+    "start": "npm index.js"
   },
   "repository": {
     "type": "git",
