@@ -28,6 +28,7 @@
     "cors": "^2.8.5",
     "debug": "^4.4.3",
     "depd": "^2.0.0",
+    "dotenv": "^17.2.3",
     "dunder-proto": "^1.0.1",
     "ee-first": "^1.1.1",
     "encodeurl": "^2.0.0",
@@ -127,10 +128,9 @@
     "wrappy": "^1.0.2",
     "xtend": "^4.0.2"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "div": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -138,7 +138,7 @@
   },
   "author": "",
   "license": "ISC",
-  "type":"module",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/Kishorekumar1116/Street-Issue-Report-backend/issues"
   },
