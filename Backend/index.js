@@ -66,6 +66,17 @@ app.get("/reports", async (req, res) => {
   }
 });
 
+// Clear all reports
+app.delete("/clear-reports", async (req, res) => {
+  try {
+    await Report.deleteMany({});
+    res.status(200).json({ message: "All reports cleared successfully!" });
+  } catch (error) {
+    console.error("❌ Error clearing reports:", error);
+    res.status(500).json({ message: "Server error while clearing reports" });
+  }
+});
+
 
 // 🔹 Upload + Create Report
 app.post("/report", upload.single("image"), async (req, res) => {
@@ -95,3 +106,4 @@ app.use("/uploads", express.static(uploadDir));
 // ✅ Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
